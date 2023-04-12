@@ -3,7 +3,8 @@
         <div class="row">
             <div class="col-3">
                 <UserProfileInfo @follow="follow" @unfollow="unfollow" :user="user"></UserProfileInfo>
-                <UserProfileWrite @post_a_post="post_a_post"></UserProfileWrite>
+                <!--是自己才显示编辑区-->
+                <UserProfileWrite v-if="is_me" @post_a_post="post_a_post"></UserProfileWrite>
             </div>
             <div class="col-9">
                 <UserProfilePosts :user="user" :posts="posts"></UserProfilePosts>
@@ -21,30 +22,35 @@ import UserProfileWrite from '@/components/UserProfileWrite.vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import $ from 'jquery';
-
+import { computed } from 'vue';
 
 export default {
     name: 'UserProfile',
     components: { ContentBase, UserProfileInfo, UserProfilePosts, UserProfileWrite },
     setup() {
+
+        //用路由获取userID，为什么不用store，两者有本质区别
+        //因为路由获取的是打开页面的userID，而store的userID是用户的userID
         const store = useStore();
         const route = useRoute();
-        //用路由获取userID，为什么不用store，
-        //因为路由获取的是打开页面的userID，而store的userID是用户的userID
-        //两者有本质区别
-        const userID = route.params.userId;
+        const userID = parseInt(route.params.userID);//不解析返回的是字符串，会影响后续is_me的判断
+
         const user = reactive({
             //这里不需要定义属性，在ajax的success里面赋值属性时自动定义
         });
-        const posts = reactive(
+        const posts = reactive({
             //这里不需要定义属性，在ajax的success里面赋值属性时自动定义
-        );
+        });
 
+        //判断当前的用户界面是不是自己的userID
+        const is_me = computed(() => { return userID == store.state.user.id })
+
+        //(1)获取用户信息
         $.ajax({
             url: "https://app165.acapp.acwing.com.cn/myspace/getinfo/",
             type: "GET",
             data: {
-                userID: userID
+                user_id: userID
             },
             //这里的认证，代表的是登陆用户的信息
             //这里的传参data，代表的是想要查看的用户页面的userID
@@ -60,17 +66,19 @@ export default {
                 user.is_followed = resp.is_followed;
             }
         })
+        //(2)获取帖子信息
         $.ajax({
             url: "https://app165.acapp.acwing.com.cn/myspace/post/",
             type: "GET",
             data: {
-                userID: userID
+                user_id: userID
             },
             headers: {
                 "Authorization": "Bearer " + store.state.user.access,
             },
             success(resp) {
-                console.log(resp)
+                posts.posts = resp;
+                posts.count = resp.length;
             }
         })
 
@@ -119,7 +127,7 @@ export default {
         }
 
 
-        return { user, follow, unfollow, posts, post_a_post };
+        return { user, follow, unfollow, posts, post_a_post, is_me };
     }
 }
 </script >

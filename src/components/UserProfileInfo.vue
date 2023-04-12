@@ -2,7 +2,8 @@
     <div class="card" style="margin-top: 30px;">
         <div class="card-body">
             <div class="row">
-                <div class="col-3">
+                <!-- grid system的可以直接后缀一个名，这个名可用于CSS-->
+                <div class="col-3 image-field">
                     <!--
                         img class=".img-fluid"是bootstrap的响应式图片，
                         可以自适应大小，很重要,加个samll可以指定图片大小
@@ -47,6 +48,13 @@ export default {
 </script>
 
 <style scoped>
+.image-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
 /* 指定圆形图片 */
 img {
     border-radius: 50%;
