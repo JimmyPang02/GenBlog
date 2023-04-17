@@ -111,6 +111,27 @@ const ModuleUser = {
                     data.error()
                 }
             });
+        },
+        register(context,data) {
+            //后端实现：
+            //先查询数据库，用户名是否存在，然后判断两次输入的密码是否一致，如果通过，则写入数据库
+            $.ajax({
+                url: "https://app165.acapp.acwing.com.cn/myspace/user/",
+                type: "POST",
+                data: {
+                    username: data.username,
+                    password: data.password,
+                    password_confirm:data.password2
+                },
+                success(resp) {
+                    if (resp.result == 'success') {
+                        data.success()
+                    }
+                    else {
+                        data.error(resp.result)
+                    }
+                }
+            })
         }
     },
     modules: {

@@ -4,10 +4,11 @@
             <div class="col-3">
                 <UserProfileInfo @follow="follow" @unfollow="unfollow" :user="user"></UserProfileInfo>
                 <!--是自己才显示编辑区-->
-                <UserProfileWrite v-if="is_me" @post_a_post="post_a_post"></UserProfileWrite>
+                <UserProfileWrite v-if="is_me" @post_a_post="post_a_post">
+                </UserProfileWrite>
             </div>
             <div class="col-9">
-                <UserProfilePosts :user="user" :posts="posts"></UserProfilePosts>
+                <UserProfilePosts :user="user" :posts="posts" @delete_a_post="delete_a_post"></UserProfilePosts>
             </div>
         </div>
     </ContentBase>
@@ -45,7 +46,7 @@ export default {
         //判断当前的用户界面是不是自己的userID
         const is_me = computed(() => { return userID == store.state.user.id })
 
-        //(1)获取用户信息
+        //(1)获取所查看的用户信息
         $.ajax({
             url: "https://app165.acapp.acwing.com.cn/myspace/getinfo/",
             type: "GET",
@@ -66,7 +67,7 @@ export default {
                 user.is_followed = resp.is_followed;
             }
         })
-        //(2)获取帖子信息
+        //(2)获取所查看的用户的帖子信息
         $.ajax({
             url: "https://app165.acapp.acwing.com.cn/myspace/post/",
             type: "GET",
@@ -108,11 +109,11 @@ export default {
         //     }
         // )
         const follow = () => {
-            user.isfollowed = true;
+            user.is_followed = true;
             user.followerCount = user.followerCount + 1;
         };
         const unfollow = () => {
-            user.isfollowed = false;
+            user.is_followed = false;
             user.followerCount = user.followerCount - 1;
         };
         /**/
@@ -126,8 +127,15 @@ export default {
             });
         }
 
-
-        return { user, follow, unfollow, posts, post_a_post, is_me };
+        const delete_a_post = (post_id) => {
+            //前端删除
+            posts.posts = posts.posts.filter(
+                //这里面是遍历posts数组里的每个元素post
+                //只要不是删除帖子ID的帖子都保留
+                post => post.id !== post_id
+            );
+        }
+        return { user, follow, unfollow, posts, post_a_post, is_me, delete_a_post };
     }
 }
 </script >

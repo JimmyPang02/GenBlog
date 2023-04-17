@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+import { useStore } from 'vuex';
 
 export default {
     name: 'UserProfileInfo',
@@ -35,11 +37,49 @@ export default {
         // let fullname = computed(() => {
         //     return props.user.lastname + props.user.firstname;
         // });
+        const store = useStore();
         const follow = () => (
-            context.emit("follow")
+            //后端实现关注
+            $.ajax({
+                url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
+                type: "POST",
+                //data传的是所查看的用户
+                data: {
+                    target_id: props.user.id
+                },
+                //jwt认证的是自身用户
+                headers: {
+                    'Authorization': 'Bearer ' + store.state.user.access
+                },
+                //后端成功则进行前端修改，保持数据一致性
+                success(resp) {
+                    if (resp.result == 'success') {
+                        context.emit("follow")
+                    }
+                }
+            })
+
         );
         const unfollow = () => (
-            context.emit("unfollow")
+            //后端实现取消关注
+            $.ajax({
+                url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
+                type: "POST",
+                //data传的是所查看的用户
+                data: {
+                    target_id: props.user.id
+                },
+                //jwt认证的是自身用户
+                headers: {
+                    'Authorization': 'Bearer ' + store.state.user.access
+                },
+                //后端成功则进行前端修改，保持数据一致性
+                success(resp) {
+                    if (resp.result == 'success') {
+                        context.emit("unfollow")
+                    }
+                }
+            })
         );
 
         return { follow, unfollow };
