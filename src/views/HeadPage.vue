@@ -21,7 +21,7 @@ import innerpage from '../components/innerpageView.vue'
 header.full-page {
   height: 100vh;
   background-attachment: fixed;
-  background-image: url('../assets/index.jpg');
+  background-image: url('../assets/index.png');
   color:white;
 }
 

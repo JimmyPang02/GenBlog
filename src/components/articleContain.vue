@@ -45,5 +45,7 @@ export default {
 }
 #article-container{
     overflow-wrap: break-word;
+    display: flex;
+    align-content:baseline;
 }
 </style>

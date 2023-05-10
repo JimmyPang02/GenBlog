@@ -83,4 +83,8 @@ h1 {
 a{
     color:black !
 }
+
+#recent-post{
+    display: flex;
+}
 </style>
