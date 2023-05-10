@@ -1,4 +1,5 @@
 <template>
+    
     <!-- <div style="text-align: center; font-size: 24px; margin-top: 50px;">关注列表</div> -->
     <ContentBase>
         <div v-for="user in users" :key="user.id" style="margin-top: 20px;">
@@ -40,9 +41,10 @@ import { ref } from 'vue';
 import router from '@/router/index';
 import { useStore } from 'vuex';
 
+
 export default {
     name: 'FollowList',
-    components: { ContentBase },
+    components: { ContentBase},
     setup() {
 
         //请求用户列表信息

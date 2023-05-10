@@ -5,7 +5,9 @@
             用于把东西放在中间
       -->
         <div class="container">
-            <slot></slot>
+            <a-card bordered="false">
+                <slot></slot>
+            </a-card>
         </div>
     </div>
 </template>
@@ -20,5 +22,7 @@ export default {
 .container {
     margin-top: 30px;
     margin-bottom: 30px;
+    padding: 0px 40px;
+
 }
 </style>

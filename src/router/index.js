@@ -1,19 +1,37 @@
 import { createRouter, createWebHistory } from 'vue-router'
 //import { createRouter, createWebHashHistory } from 'vue-router'
 
-import HomeView from '../views/HomeView.vue'
+/* import HomeView from '../views/HomeView.vue' */
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import FollowList from '../views/FollowList.vue'
 import UserProfile from '../views/UserProfile.vue'
-
+import HomePage from "../views/HeadPage.vue"
+import MyArticlePage from "../views/MyArticlePage.vue"
+import WriteCenter from "../views/WriteCenter.vue"
+import ArticlePage from "../views/ArticlePage.vue"
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomePage
+  },
+  {
+    path: '/myarticle/',
+    name: 'myarticle',
+    component: MyArticlePage
+  },
+  {
+    path: '/writecenter/',
+    name: 'writecenter',
+    component: WriteCenter
+  },
+  {
+    path: '/article/',
+    name: 'article',
+    component: ArticlePage
   },
   {
     path: '/login/',
