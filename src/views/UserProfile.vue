@@ -1,34 +1,106 @@
 <template>
-    <ContentBase>
-        <div class="row">
-            <div class="col-3">
-                <UserProfileInfo @follow="follow" @unfollow="unfollow" :user="user"></UserProfileInfo>
-                <!--是自己才显示编辑区-->
-                <UserProfileWrite v-if="is_me" @post_a_post="post_a_post">
-                </UserProfileWrite>
-            </div>
-            <div class="col-9">
-                <UserProfilePosts :user="user" :posts="posts" @delete_a_post="delete_a_post"></UserProfilePosts>
-            </div>
+    <ContentBaseNcard>
+        <a-row :gutter="16">
+            <a-col :span="6">
+                <UserProfileInfo @follow="follow" @unfollow="unfollow" :user="user" />
+            </a-col>
+            <a-col :span="18">
+                <a-card :bordered="true" style="width: 100%; margin: 30px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div>
+                        <a-menu mode="horizontal">
+                            <a-menu-item key="followlist" @click="selectMenu('followlist')">
+                                <template #icon>
+                                    <AppstoreOutlined />
+                                </template>
+                                <TeamOutlined></TeamOutlined>
+                                关注列表
+                            </a-menu-item>
+                            <a-menu-item key="myposts" @click="selectMenu('myposts')">
+                                <FormOutlined></FormOutlined>
+                                我的文章
+                            </a-menu-item>
+                        </a-menu>
+                    </div>
+                    <div v-if="Current === 'followlist'">
+                        <FollowList />
+                    </div>
+                    <div v-if="Current === 'myposts'">
+                        <UserProfileWrite />
+                    </div>
+                </a-card>
+            </a-col>
+        </a-row>
+    </ContentBaseNcard>
+    <!-- <ContentBase></ContentBase> -->
+    <!-- <UserProfileInfo @follow="follow" @unfollow="unfollow" :user="user"></UserProfileInfo>
+        <div>
+            <a-menu mode="horizontal">
+                <a-menu-item key="followlist" @click="selectMenu('followlist')">
+                    <template #icon>
+                        <appstore-outlined />
+                    </template>
+                    <TeamOutlined></TeamOutlined>
+                    关注列表
+                </a-menu-item>
+                <a-menu-item key="myposts" @click="selectMenu('myposts')">
+                    <FormOutlined></FormOutlined>
+                    我的文章
+                </a-menu-item>
+            </a-menu>
         </div>
-    </ContentBase>
+        <div v-if="Current === 'followlist'">
+            <FollowList></FollowList>
+        </div>
+        <div v-if="Current === 'myposts'">
+            <UserProfileWrite></UserProfileWrite>
+        </div> -->
 </template> 
   
 <script>
 import { reactive } from 'vue';
-import ContentBase from '../components/ContentBase.vue';
+import { ref } from 'vue'
+
+import ContentBaseNcard from '../components/ContentBaseNcard.vue';
 import UserProfileInfo from '../components/UserProfileInfo.vue';
-import UserProfilePosts from '../components/UserProfilePosts.vue';
+// import UserProfilePosts from '../components/UserProfilePosts.vue';
 import UserProfileWrite from '@/components/UserProfileWrite.vue';
+import FollowList from './FollowList.vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import $ from 'jquery';
 import { computed } from 'vue';
+import { TeamOutlined, FormOutlined } from '@ant-design/icons-vue';
 
 export default {
     name: 'UserProfile',
-    components: { ContentBase, UserProfileInfo, UserProfilePosts, UserProfileWrite },
+    components: {
+        ContentBaseNcard, UserProfileInfo, FollowList, UserProfileWrite,
+        TeamOutlined, FormOutlined,
+    },//UserProfilePosts, UserProfileWrite },
+
+    //这种都是VUE2写法， VUE3全部写进setup就完事
+    // data() {
+    //     return {
+    //         Current: 'mail',
+    //     };
+    // },
+    // methods: {
+    //     selectMenu(key) {
+    //         this.Current = key;
+    //     },
+    // },
+
+
     setup() {
+
+        // 内嵌菜单栏
+        let Current = ref('followlist');
+        const selectMenu = (key) => {
+            Current.value = key;
+            console.log(Current.value)
+        };
+
 
         //用路由获取userID，为什么不用store，两者有本质区别
         //因为路由获取的是打开页面的userID，而store的userID是用户的userID
@@ -135,7 +207,10 @@ export default {
                 post => post.id !== post_id
             );
         }
-        return { user, follow, unfollow, posts, post_a_post, is_me, delete_a_post };
+        return {
+            selectMenu, Current,
+            user, follow, unfollow, posts, post_a_post, is_me, delete_a_post
+        };
     }
 }
 </script >

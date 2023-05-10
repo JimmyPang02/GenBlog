@@ -5,7 +5,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
-import UserList from '../views/UserList.vue'
+import FollowList from '../views/FollowList.vue'
 import UserProfile from '../views/UserProfile.vue'
 
 
@@ -26,9 +26,9 @@ const routes = [
     component: RegisterView
   },
   {
-    path: '/userlist/',
-    name: 'userlist',
-    component: UserList
+    path: '/FollowList/',
+    name: 'FollowList',
+    component: FollowList
   },
   {
     path: '/userprofile/:userID/',

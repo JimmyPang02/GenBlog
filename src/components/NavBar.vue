@@ -17,7 +17,7 @@
                             <router-link class="nav-link active" aria-current="page" :to="{ name: 'home' }">首页</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" :to="{ name: 'userlist' }">好友列表</router-link>
+                            <router-link class="nav-link" :to="{ name: 'FollowList' }">好友列表</router-link>
                         </li>
                         <li class="nav-item">
                             <!--这个用户动态地方不能轻易改成$store.state.user.id，因为一开始还没有登录，就没有user.id
@@ -44,7 +44,7 @@
                             <router-link class="nav-link active" aria-current="page" :to="{ name: 'home' }">首页</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link class="nav-link" :to="{ name: 'userlist' }">好友列表</router-link>
+                            <router-link class="nav-link" :to="{ name: 'FollowList' }">好友列表</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link"
@@ -54,9 +54,9 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{
-                                name: 'userprofile',
-                                params: { userID: $store.state.user.id }
-                            }">
+                                    name: 'userprofile',
+                                    params: { userID: $store.state.user.id }
+                                }">
                                 {{ $store.state.user.username }}
                             </router-link>
                         </li>

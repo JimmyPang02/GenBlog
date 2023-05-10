@@ -1,6 +1,29 @@
 <template>
     <ContentBase>
-        <div class="row justify-content-md-center">
+        <div style="text-align: center; font-size: 24px; margin-top: 50px;">
+            欢迎注册
+        </div>
+        <a-row type="flex" justify="center" style="margin-top: 20px;">
+            <a-col :span="8">
+                <a-form name="basic" :label-col="{ span: 4 }" :wrapper-col="{ span: 16 }" @submit.prevent="register">
+                    <a-form-item label="用户名" name="username" :rules="[{ required: true, message: '请输入用户名！' }]">
+                        <a-input v-model:value="username" />
+                    </a-form-item>
+                    <a-form-item label="密码" name="password" :rules="[{ required: true, message: '请输入密码！' }]">
+                        <a-input-password v-model:value="password" />
+                    </a-form-item>
+                    <a-form-item label="确认密码" name="password2" :rules="[{ required: true, message: '请再次输入密码！' }]">
+                        <a-input-password v-model:value="password2" />
+                    </a-form-item>
+                    <div style="color: red;">{{ error_message }}</div>
+                    <a-form-item :wrapper-col="{ offset: 4, span: 16 }">
+                        <a-button type="primary" html-type="submit">注册</a-button>
+                    </a-form-item>
+                </a-form>
+            </a-col>
+        </a-row>
+
+        <!-- <div class="row justify-content-md-center">
             <div class="col-3">
                 <form @submit.prevent="register">
                     <div class="mb-3">
@@ -19,7 +42,7 @@
                     <button type="submit" class="btn btn-primary">注册</button>
                 </form>
             </div>
-        </div>
+        </div> -->
     </ContentBase>
 </template> 
   

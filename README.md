@@ -1,4 +1,4 @@
-# acwinglearn
+# genblog
 
 ## Project setup
 ```

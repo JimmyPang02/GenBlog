@@ -1,7 +1,20 @@
 <template>
+    <!-- <div style="text-align: center; font-size: 24px; margin-top: 50px;">关注列表</div> -->
     <ContentBase>
-        <div>用户列表</div>
-        <div v-for="user in users" :key="user.id">
+        <div v-for="user in users" :key="user.id" style="margin-top: 20px;">
+            <a-card @click="open_user_profile(user.id)">
+                <a-row>
+                    <a-col :span="4">
+                        <a-avatar :src="user.photo" :size="50" />
+                    </a-col>
+                    <a-col :span="20">
+                        <div class="username">{{ user.username }}</div>
+                        <div class="followerCount">粉丝数：{{ user.followerCount }}</div>
+                    </a-col>
+                </a-row>
+            </a-card>
+        </div>
+        <!-- <div v-for="user in users" :key="user.id">
             <div class="card" @click="open_user_profile(user.id)">
                 <div class="card-body">
                     <div class="row">
@@ -16,7 +29,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
     </ContentBase>
 </template> 
   
@@ -28,7 +41,7 @@ import router from '@/router/index';
 import { useStore } from 'vuex';
 
 export default {
-    name: 'UserList',
+    name: 'FollowList',
     components: { ContentBase },
     setup() {
 
