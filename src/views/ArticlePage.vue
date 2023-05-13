@@ -2,6 +2,7 @@
 import articleContain from '../components/articleContain.vue'
 import Navigation from '../components/navigationView.vue';
 import Inforcard from '../components/inforcardView.vue';
+import AiReadCard from '@/components/AiReadCard.vue';
 </script>
 
 <template>
@@ -21,6 +22,7 @@ import Inforcard from '../components/inforcardView.vue';
         </div>
         <div id="aside-content">
             <Inforcard></Inforcard>
+            <AiReadCard></AiReadCard>
         </div>
     </main>
 </template>

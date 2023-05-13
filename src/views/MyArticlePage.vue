@@ -18,7 +18,7 @@ import innerpage from '../components/innerpageView.vue'
     display: flex;
     flex: 1 auto;
     margin: 0 auto;
-    padding: 40px 15px;
+    padding: 10px 15px;
     max-width: 1200px;
     width: 100%;
 }

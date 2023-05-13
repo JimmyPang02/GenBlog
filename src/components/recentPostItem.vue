@@ -63,11 +63,11 @@ import {FieldTimeOutlined,ContainerOutlined} from '@ant-design/icons-vue'
 
 .recent-post-item{
     box-sizing: border-box;
-    border-radius: 8px;
+    
     background: var(--card-bg);
     margin-top: 20px;
     box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
-    
+    border-radius: 20px;
 }
 
 .artical-meta-wrap{

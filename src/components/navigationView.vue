@@ -17,9 +17,10 @@ const logout = () => {
 <template>
     <nav class="container">
         <div id="blog-info">
-            <router-link to="/"><span class="site name">Gen-Blog</span></router-link>
-
-
+            <div class="blog-img">
+                <img src="../assets/aichat.png" alt="图像">
+            </div>
+            <router-link to="/"><span class="site-name">Gen-Blog</span></router-link>
         </div>
 
         <div id="menus">
@@ -69,11 +70,29 @@ const logout = () => {
     align-items: center
 }
 
+.blog-img{
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border-radius: 70px;
+}
+
+.blog-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 #blog-info {
     font-size: 1.5em;
     font-weight: bold;
+    display: flex;
     width: 25%;
     margin: 0 .5em;
+}
+
+.site-name{
+    color:#3170a7;
 }
 
 #menus {

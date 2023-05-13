@@ -11,12 +11,13 @@ VMdPreview.use(githubTheme, {
   Hljs: hljs,
 });
 
+//文章内容
 </script>
 
 <template>
     <div id="post">
         <div id="article-container">
-            <v-md-preview :text="text"></v-md-preview>
+            <v-md-preview :text="text" style="overflow: hidden"></v-md-preview>
         </div>
     </div>
 </template>
@@ -37,14 +38,15 @@ export default {
     align-self: flex-start;
     -ms-flex-item-align: start;
     padding: 50px 40px;
-
+    width:100%;
     border-radius: 8px;
     background-color: white;
     box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
     
 }
 #article-container{
-    overflow-wrap: break-word;
+    width:100%;
+    overflow-wrap:break-word;
     display: flex;
     align-content:baseline;
 }

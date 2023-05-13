@@ -1,6 +1,6 @@
 <script setup>
 import pageHeader from '../components/pageHeader.vue'
-import innerpage from '../components/innerpageView.vue'
+import recentPostItem from '@/components/recentPostItem.vue';
 </script>
 
 <template>
@@ -9,7 +9,14 @@ import innerpage from '../components/innerpageView.vue'
   </header>
 
   <main class="layout">
-    <innerpage></innerpage>
+    <div class="first-page-article">
+      <recentPostItem></recentPostItem>
+      <recentPostItem></recentPostItem>
+      <recentPostItem></recentPostItem>
+      <recentPostItem></recentPostItem>
+      <recentPostItem></recentPostItem>
+      <recentPostItem></recentPostItem>
+    </div>
     
   </main>
 

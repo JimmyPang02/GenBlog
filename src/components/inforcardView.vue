@@ -1,6 +1,4 @@
-<script setup>
-import {MailFilled} from '@ant-design/icons-vue'
-</script>
+
 
 <template>
     <div class="card-widget card-info">
@@ -15,20 +13,11 @@ import {MailFilled} from '@ant-design/icons-vue'
             <a href="/archives/" data-pjax-state="">
                 <div class="headline">文章</div>
                 <div class="length-num">17</div>
-            </a><a href="/tags/" data-pjax-state="">
-                <div class="headline">標籤</div>
-                <div class="length-num">11</div>
-            </a><a href="/categories/" data-pjax-state="">
-                <div class="headline">分類</div>
-                <div class="length-num">5</div>
             </a>
         </div>
 
         <div class="card-info-social-icons is-center">
-            <a class="social-icon" href="mailto:my@crazywong.com" rel="external nofollow noreferrer" target="_blank"
-                title="Email">
-                <mail-filled />
-            </a>
+            <a-button type="primary">关注</a-button>
             
         </div>
     </div>
@@ -37,10 +26,9 @@ import {MailFilled} from '@ant-design/icons-vue'
 <style scoped>
 .card-widget {
     background-color: white;
-    position: sticky;
+    
     top: 20px;
     overflow: hidden;
-    margin-top: 20px;
     padding: 20px 24px;
     border-radius: 8px;
     box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
@@ -80,5 +68,10 @@ import {MailFilled} from '@ant-design/icons-vue'
     font-weight: 900;
     color: var(--font-color);
     font-size: 1.4em;
+}
+#follow{
+    background-color: rgb(187, 187, 233);
+    border: none;
+    color: white;
 }
 </style>
