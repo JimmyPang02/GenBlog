@@ -1,5 +1,5 @@
 <script setup>
-import {FieldTimeOutlined,ContainerOutlined} from '@ant-design/icons-vue'
+import {FieldTimeOutlined} from '@ant-design/icons-vue'
 </script>
 
 <template>
@@ -15,9 +15,7 @@ import {FieldTimeOutlined,ContainerOutlined} from '@ant-design/icons-vue'
                 <span class="post-meta-date">
                     |<field-time-outlined />发表于 2023-05-06
                 </span>
-                <span class="post-kinds">
-                    |<container-outlined /> 教程类
-                </span>
+                
             </div>
             <div class="content">
                 本教程更新於 2023 年 04 月 10 日，教程的內容針對最新穩定版而更新（如果你是舊版，教程會有些出入，請留意）

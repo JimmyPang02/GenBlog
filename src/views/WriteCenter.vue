@@ -15,11 +15,14 @@ import richTextEditor from '../components/richTextEditor.vue';
         </div>
 
         <div id="aside-content">
-            <AiReadCard></AiReadCard>
+            <div class="sticky">
+                <AiReadCard></AiReadCard>
 
-            <div id="aside-button">
-                <a-button type="primary" class="button">一键润色</a-button>
+                <div id="aside-button">
+                    <a-button type="primary" class="button">一键润色</a-button>
+                </div>
             </div>
+
         </div>
 
 
@@ -59,9 +62,15 @@ span a {
     display: flex;
     align-content: center;
     justify-content: center;
+    
 }
 
-#aside-button .button{
- width:100%;
+#aside-button .button {
+    width: 100%;
+}
+
+.sticky{
+    position: sticky;
+    top: 20px;
 }
 </style>

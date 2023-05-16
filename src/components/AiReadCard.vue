@@ -17,13 +17,12 @@ import {ArrowRightOutlined} from "@ant-design/icons-vue"
     </div>
 </template>
 
+
 <style scoped>
 #airead{
     background-color: white;
-    position: sticky;
-    top: 20px;
+   
     overflow: hidden;
-    margin-top:20px;
     padding: 20px 24px;
     border-radius: 8px;
     box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);

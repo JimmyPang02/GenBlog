@@ -10,7 +10,7 @@ import AiReadCard from '@/components/AiReadCard.vue';
         <div class="navigate">
             <Navigation></Navigation>
             <div class="mypage">
-                <h1 class="site-title" style="color:white">Git教程</h1>
+                <h1 class="site-title" style="color:white">javascript教程</h1>
             </div>
         </div>
     </header>
@@ -22,7 +22,13 @@ import AiReadCard from '@/components/AiReadCard.vue';
         </div>
         <div id="aside-content">
             <Inforcard></Inforcard>
-            <AiReadCard></AiReadCard>
+            <div class="sticky">
+                <AiReadCard></AiReadCard>
+                <div id="aside-button">
+                    <a-button type="primary" class="button">提炼文章内容</a-button>
+                </div>
+            </div>
+
         </div>
     </main>
 </template>
@@ -50,7 +56,7 @@ import AiReadCard from '@/components/AiReadCard.vue';
 #aside-content {
     padding-left: 15px;
     width: 26%;
-    
+
 }
 
 .mypage {
@@ -61,10 +67,10 @@ import AiReadCard from '@/components/AiReadCard.vue';
     padding: 0 10px;
     width: 100%;
 
-    
+
 }
 
-.article_page_head{
+.article_page_head {
     height: 50vh;
     background-attachment: fixed;
     background-image: url('../assets/10001.jpg');
@@ -73,7 +79,7 @@ import AiReadCard from '@/components/AiReadCard.vue';
     width: 100%;
     background-color: #49b1f5;
     background-position: center center;
-    background-size:auto;
+    background-size: auto;
     background-repeat: no-repeat;
 }
 
@@ -82,11 +88,28 @@ h1 {
     font-size: 3em
 }
 
-a{
-    color:black !
+a {
+    color: black !
 }
 
-#recent-post{
+#recent-post {
     display: flex;
+}
+
+#aside-button {
+    margin-top: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+}
+.sticky{
+    margin-top:20px;
+    position: sticky;
+    top: 20px;
+}
+
+#aside-button .button {
+    width: 100%;
 }
 </style>
