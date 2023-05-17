@@ -15,7 +15,7 @@ VMdEditor.use(githubTheme, {
 <template>
     <div id="post">
         <div id="article-container">
-            <v-md-editor v-model="text" height="400px"></v-md-editor>
+            <v-md-editor v-model="text" height="600px" @save="saveFile"></v-md-editor>
         </div>
     </div>
 </template>
@@ -28,6 +28,14 @@ export default {
 ## 这是一个markdown格式的富文本编辑器
 可以提供实时书写效果展示，可插入图片连接![Description](https://file.crazywong.com/gh/jerryc127/CDN@latest/Photo/categories.jpg)`,
     };
+  },
+  methods:{
+    saveFile(text,html){
+      console.log('successfully saved')
+      console.log(text)
+      console.log(html)
+      
+    }
   },
   mounted() {
     console.log(this.text)
