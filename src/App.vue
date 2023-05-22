@@ -1,19 +1,14 @@
 <template>
-  <NavBar />
   <router-view :key="$route.fullPath" />
 </template>
 
 
 <script>
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap';
-import NavBar from './components/NavBar.vue';
+/* import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap'; */
 
 export default {
-  name: 'App',
-  components: {
-    NavBar,
-  }
+  name: 'App'
 }
 
 </script>
@@ -23,9 +18,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  background: #f5f5f5;
+  
   /* 灰色背景 */
 }
 

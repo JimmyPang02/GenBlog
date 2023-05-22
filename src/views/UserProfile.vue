@@ -1,4 +1,6 @@
 <template>
+    <Navigation></Navigation>
+
     <ContentBaseNcard>
         <a-row :gutter="16">
             <a-col :span="6">
@@ -26,7 +28,7 @@
                         <FollowList />
                     </div>
                     <div v-if="Current === 'myposts'">
-                        <UserProfileWrite />
+                        <MyArticlePage />
                     </div>
                 </a-card>
             </a-col>
@@ -63,20 +65,20 @@ import { ref } from 'vue'
 
 import ContentBaseNcard from '../components/ContentBaseNcard.vue';
 import UserProfileInfo from '../components/UserProfileInfo.vue';
-// import UserProfilePosts from '../components/UserProfilePosts.vue';
-import UserProfileWrite from '@/components/UserProfileWrite.vue';
+import MyArticlePage from './MyArticlePage.vue';
 import FollowList from './FollowList.vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import $ from 'jquery';
 import { computed } from 'vue';
 import { TeamOutlined, FormOutlined } from '@ant-design/icons-vue';
+import Navigation from '../components/navigationView.vue';
 
 export default {
     name: 'UserProfile',
     components: {
-        ContentBaseNcard, UserProfileInfo, FollowList, UserProfileWrite,
-        TeamOutlined, FormOutlined,
+        ContentBaseNcard, UserProfileInfo, FollowList, MyArticlePage,
+        TeamOutlined, FormOutlined,Navigation,
     },//UserProfilePosts, UserProfileWrite },
 
     //这种都是VUE2写法， VUE3全部写进setup就完事

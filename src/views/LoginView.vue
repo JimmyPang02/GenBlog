@@ -92,7 +92,7 @@ export default {
                 success() {
                     console.log("success")
                     //（1）实现登录成功后跳转
-                    router.push({ name: "FollowList" });
+                    router.push({ name: "home" });
                 },
                 error() {
                     //（2）错误的话，显示错误信息

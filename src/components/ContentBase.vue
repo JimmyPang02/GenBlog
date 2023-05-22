@@ -25,5 +25,13 @@ export default {
 .container {
     margin-top: 30px;
     margin-bottom: 30px;
+    width:100%;
+}
+.home{
+    
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
 }
 </style>
