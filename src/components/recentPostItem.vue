@@ -1,34 +1,49 @@
 <script setup>
-import {FieldTimeOutlined} from '@ant-design/icons-vue'
+import {FieldTimeOutlined} from '@ant-design/icons-vue';
 </script>
 
 <template>
     <div class="recent-post-item">
         <div class="post-cover-left">
-            <router-link to="/article" >
-                <img src="./icons/butterfly-docs-01-cover.png" alt="" class="post-img">
+            <router-link :to="{ name: 'article', params: { articleID: id} }" >
+                <img :src="pageImg" alt="" class="post-img">
             </router-link>
         </div>
         <div class="recent-post-info">
-            <router-link to="/article" class="article-title">Gen-Blog使用文檔(一) 快速開始</router-link>
+            <router-link :to="{ name: 'article', params: { articleID: id} }" class="article-title">{{ title }}</router-link>
             <div class="artical-meta-wrap">
                 <span class="post-meta-date">
-                    |<field-time-outlined />发表于 2023-05-06
+                    {{ author }}|<field-time-outlined />发表于 {{ publishTime }}
                 </span>
                 
             </div>
             <div class="content">
-                本教程更新於 2023 年 04 月 10 日，教程的內容針對最新穩定版而更新（如果你是舊版，教程會有些出入，請留意）
+                {{briefInfo.slice(0,10)+'...'}}
             </div>
         </div>
     </div>
 </template>
 
+<script>
+export default {
+  props: {
+    title: String,
+    publishTime: String,
+    briefInfo: String,
+    author: String,
+    pageImg: String,
+    id: Number
+  }
+}
+</script>
+
+<!-- Gen-Blog使用文檔(一) 快速開始 -->
+
 <style scoped>
 .recent-post-item{
     display: flex;
     flex-direction: row;
-    
+    min-height: 200px;
 }
 .post-cover-left {
     overflow: hidden;
@@ -65,7 +80,8 @@ import {FieldTimeOutlined} from '@ant-design/icons-vue'
     background: var(--card-bg);
     margin-top: 20px;
     box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
-    border-radius: 20px;
+    border-radius: 20px 20px;
+    overflow: hidden;
 }
 
 .artical-meta-wrap{

@@ -6,11 +6,24 @@ import innerpage from '../components/innerpageView.vue'
 
     <main class="layout">
         <div id="recent-post">
-            <innerpage></innerpage>
+            <innerpage v-if="authorID" :authorID="authorID"></innerpage>
 
         </div>
     </main>
 </template>
+
+
+<script>
+export default {
+    props:{
+        authorID: Number
+    },
+    mounted(){
+        console.log('authorID:'+this.authorID)
+    }
+    
+}
+</script>
 
 
 <style scoped>

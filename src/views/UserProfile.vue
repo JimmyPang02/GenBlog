@@ -28,7 +28,7 @@
                         <FollowList />
                     </div>
                     <div v-if="Current === 'myposts'">
-                        <MyArticlePage />
+                        <MyArticlePage :authorID="userID"/>
                     </div>
                 </a-card>
             </a-col>
@@ -109,7 +109,7 @@ export default {
         const store = useStore();
         const route = useRoute();
         const userID = parseInt(route.params.userID);//不解析返回的是字符串，会影响后续is_me的判断
-
+        console.log('UserProfile userID:'+userID);
         const user = reactive({
             //这里不需要定义属性，在ajax的success里面赋值属性时自动定义
         });
@@ -210,7 +210,7 @@ export default {
             );
         }
         return {
-            selectMenu, Current,
+            selectMenu, Current, userID,
             user, follow, unfollow, posts, post_a_post, is_me, delete_a_post
         };
     }
