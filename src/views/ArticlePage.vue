@@ -3,25 +3,72 @@ import articleContain from '../components/articleContain.vue'
 import Navigation from '../components/navigationView.vue';
 import Inforcard from '../components/inforcardView.vue';
 import AiReadCard from '@/components/AiReadCard.vue';
+import { useRoute } from 'vue-router';
+import {ref} from 'vue';
+
+//存储文章内容
+//let articleInfo=''
+let articleTitle=ref();
+let articleText=ref();
+let publishTime=ref();
+let imgUrl=ref();
+let authorId=ref();
+//文章id
+
+
+const route = useRoute();
+const articleID = parseInt(route.params.articleID);
+console.log('article id:'+articleID)
+
+//根据文章ID请求文章数据
+var myHeaders = new Headers();
+myHeaders.append("User-Agent", "Apifox/1.0.0 (https://www.apifox.cn)");
+
+var formdata = new FormData();
+formdata.append("article_id", articleID);
+
+var requestOptions = {
+   method: 'POST',
+   headers: myHeaders,
+   body: formdata,
+   redirect: 'follow'
+};
+
+fetch("http://111.230.109.227:8000/api/show_article_by_id/", requestOptions)
+   .then(response => response.json())
+   .then(result => {
+    console.log(result);
+    articleTitle.value=result['文章信息']['文章标题'];
+    articleText.value=result['文章信息']['文章内容'];
+    publishTime.value=result['文章信息']['更新时间'].slice(0,10)
+    imgUrl.value="background-image: url("+result['文章信息']['图片url']+")"
+    authorId.value=result['文章信息']['作者id']
+    //console.log('作者id:'+authorId.value);
+   })
+   .catch(error => console.log('error', error));
+
+
+
 </script>
 
 <template>
-    <header class="article_page_head">
+    <header class="article_page_head" :style="imgUrl">
         <div class="navigate">
             <Navigation></Navigation>
             <div class="mypage">
-                <h1 class="site-title" style="color:white">javascript教程</h1>
+                <h1 class="site-title" style="color:white">{{ articleTitle }}</h1>
+                <p>更新时间:{{ publishTime }}</p>
             </div>
         </div>
     </header>
 
     <main class="layout">
         <div id="recent-post">
-            <articleContain></articleContain>
+            <articleContain :text="articleText"></articleContain>
 
         </div>
         <div id="aside-content">
-            <Inforcard></Inforcard>
+            <Inforcard v-if="authorId" :authorId="authorId"></Inforcard>
             <div class="sticky">
                 <AiReadCard></AiReadCard>
                 <div id="aside-button">
@@ -73,7 +120,6 @@ import AiReadCard from '@/components/AiReadCard.vue';
 .article_page_head {
     height: 50vh;
     background-attachment: fixed;
-    background-image: url('../assets/10001.jpg');
     color: white;
     position: relative;
     width: 100%;

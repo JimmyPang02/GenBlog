@@ -24,9 +24,7 @@ VMdEditor.use(githubTheme, {
 export default {
   data() {
     return {
-      text:`# 欢迎使用Gen-Blog
-## 这是一个markdown格式的富文本编辑器
-可以提供实时书写效果展示，可插入图片连接![Description](https://file.crazywong.com/gh/jerryc127/CDN@latest/Photo/categories.jpg)`,
+      text:``,
     };
   },
   methods:{
@@ -56,7 +54,6 @@ export default {
 }
 #article-container{
     overflow-wrap: break-word;
-    height: 100%;
 }
 .v-md-editor{
   height:100% !important;

@@ -1,6 +1,27 @@
 <script setup>
-import pageHeader from '../components/pageHeader.vue'
+import pageHeader from '../components/pageHeader.vue';
 import recentPostItem from '@/components/recentPostItem.vue';
+import {ref} from 'vue';
+
+let array=ref();
+let num=ref();
+
+let myUrl = 'http://111.230.109.227:8000/api/get_random_ten_articles/';
+fetch(myUrl, {
+  method: 'get'
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data['文章列表']);
+    num.value=data['文章数目'];
+    array.value=data['文章列表'];
+});
+
+console.log("文章数："+num.value);
+console.log("文章列表"+array.value);
+
+
+
 </script>
 
 <template>
@@ -10,26 +31,24 @@ import recentPostItem from '@/components/recentPostItem.vue';
 
   <main class="layout">
     <div class="first-page-article">
-      <recentPostItem></recentPostItem>
-      <recentPostItem></recentPostItem>
-      <recentPostItem></recentPostItem>
-      <recentPostItem></recentPostItem>
-      <recentPostItem></recentPostItem>
-      <recentPostItem></recentPostItem>
+      <recentPostItem v-for="article in array" :title="article['文章标题']" :pageImg="article['图片url']"
+      :publishTime="article['更新时间']" :briefInfo="article['文章内容']" :author="article['文章作者']" :key="article['文章id']" :id="article['文章id']"></recentPostItem>
     </div>
-    
-  </main>
 
-  
-  
+  </main>
 </template>
+
+<script>
+
+</script>
+
 
 <style scoped>
 header.full-page {
   height: 100vh;
   background-attachment: fixed;
   background-image: url('../assets/index.png');
-  color:white;
+  color: white;
 }
 
 #page-header {
@@ -49,7 +68,7 @@ header.full-page {
   width: 100%;
 }
 
-#menus-items a{
+#menus-items a {
   color: white !important;
 }
 </style>

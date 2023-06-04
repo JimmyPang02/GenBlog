@@ -29,7 +29,7 @@ const routes = [
     component: WriteCenter
   },
   {
-    path: '/article/',
+    path: '/article/:articleID/',
     name: 'article',
     component: ArticlePage
   },

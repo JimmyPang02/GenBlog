@@ -6,19 +6,24 @@
             <div class="user-details">
                 <h2 class="username">{{ user.username }}</h2>
                 <h5 class="userintro">
-                    {{ user.intro ? user.intro : '这个人很懒,没有留下简介' }}
+                    {{ user.description ? user.description : '这个人很懒,没有留下简介' }}
                 </h5>
             </div>
         </div>
         <a-divider style="margin: 16px 0;" />
         <div class="user-stats">
             <a-row :gutter="8">
-                <a-col :span="12">
+                <a-col :span="8">
                     <TeamOutlined />
-                    <a-statistic title="粉丝" :value="user.followerCount">
+                    <a-statistic title="关注" :value="user.followerCount">
                     </a-statistic>
                 </a-col>
-                <a-col :span="12">
+                <a-col :span="8">
+                    <TeamOutlined />
+                    <a-statistic title="粉丝" :value="user.fanCount">
+                    </a-statistic>
+                </a-col>
+                <a-col :span="8">
                     <FormOutlined />
                     <a-statistic title="文章" :value="user.postCount ? user.postCount : 105">
                     </a-statistic>
@@ -43,6 +48,10 @@
 import $ from 'jquery';
 import { useStore } from 'vuex';
 import { UserAddOutlined, TeamOutlined, FormOutlined, UserDeleteOutlined } from '@ant-design/icons-vue';
+import API_ROUTES from "@/api/api";
+import { backendIP } from "@/api/backend";
+import { computed } from 'vue';
+
 export default {
     name: 'UserProfileInfo',
     components: { UserAddOutlined, TeamOutlined, FormOutlined, UserDeleteOutlined },
@@ -53,55 +62,58 @@ export default {
         }
     },
     setup(props, context) {
-        // let fullname = computed(() => {
-        //     return props.user.lastname + props.user.firstname;
-        // });
         const store = useStore();
-        const follow = () => (
-            //后端实现关注
+        //判断当前的用户界面是不是自己的userID
+        const is_me = computed(() => { return props.user.id == store.state.user.id })
+        const follow = () => {
+            // 判断是否是自己的界面,弹出提示
+            if (is_me.value) {
+                alert("不能关注自己哦~");
+                return;
+            }
+            // 后端关注
             $.ajax({
-                url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
+                url: backendIP + API_ROUTES.follow,
                 type: "POST",
-                //data传的是所查看的用户
                 data: {
-                    target_id: props.user.id
+                    access_token: store.state.user.access,
+                    follow_user_id: props.user.id
                 },
-                //jwt认证的是自身用户
-                headers: {
-                    'Authorization': 'Bearer ' + store.state.user.access
-                },
-                //后端成功则进行前端修改，保持数据一致性
                 success(resp) {
-                    if (resp.result == 'success') {
+                    if (resp.result == '关注用户成功') {
+                        //后端成功则进行前端修改，保持数据一致性
                         context.emit("follow")
+                        console.log("关注成功");
+                    }
+                    else {
+                        console.log("关注失败");
                     }
                 }
             })
-
-        );
+        };
         const unfollow = () => (
-            //后端实现取消关注
+
+            // 后端保证取消关注
             $.ajax({
-                url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
+                url: backendIP + API_ROUTES.unfollow,
                 type: "POST",
-                //data传的是所查看的用户
                 data: {
-                    target_id: props.user.id
-                },
-                //jwt认证的是自身用户
-                headers: {
-                    'Authorization': 'Bearer ' + store.state.user.access
+                    access_token: store.state.user.access,
+                    unfollow_user_id: props.user.id
                 },
                 //后端成功则进行前端修改，保持数据一致性
                 success(resp) {
-                    if (resp.result == 'success') {
+                    if (resp.result == '取消关注用户成功') {
                         context.emit("unfollow")
+                        console.log("取消关注成功");
+                    }
+                    else {
+                        console.log("取消关注失败");
                     }
                 }
             })
         );
-
-        return { follow, unfollow };
+        return { follow, unfollow, is_me };
     }
 }
 </script>

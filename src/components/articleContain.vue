@@ -23,13 +23,12 @@ VMdPreview.use(githubTheme, {
 </template>
 
 <script>
-import mdfile from '../assets/Git.md?raw'
+//import mdfile from '../assets/Git.md?raw'
 export default {
-  data() {
-    return {
-      text: mdfile,
-    };
-  },
+  props:{
+    text: String
+  }
+  
 };
 </script>
 
