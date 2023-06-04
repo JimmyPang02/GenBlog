@@ -25,10 +25,12 @@ export default {
 .container {
     margin-top: 30px;
     margin-bottom: 30px;
-    width:100%;
+    width: 100%;
+    align-items: center;
 }
-.home{
-    
+
+.home {
+
     height: 100%;
     display: flex;
     align-items: center;
