@@ -1,9 +1,10 @@
 <div align="center">
   <img src=".assets/logo.png" alt="GenBlog Logo" width="150"/>
-  <h1 align="center">GenBlog Smart Blog</h1>
+  <h1 align="center">GenBlog</h1>
 </div>
 
 ## Introduction
+[English](README.md) | [简体中文](README_zh.md)
 
 **GenBlog** is an innovative and interactive smart blogging platform powered by the latest **GPT API** technology. We are dedicated to integrating AI technology to make blogging, reading, and interaction more intelligent and personalized, thereby creating an unprecedented blogging experience for users.
 
