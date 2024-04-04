@@ -1,13 +1,14 @@
 <div align="center">
   <img src=".assets/logo.png" alt="GenBlog Logo" width="150"/>
-  <h1 align="center">GenBlog 智博客</h1>
+  <h1 align="center">GenBlog智博客🌐</h1>
 </div>
 
 ## 简介
 [English](README.md) | [简体中文](README_zh.md)
-**GenBlog 智博客**是一个结合了最新的GPT API技术，为用户提供富有创新和互动性的智能博客平台。我们致力于通过AI技术的融合，让博客写作、阅读及互动更加智能化、个性化，从而为用户创造出前所未有的博客体验。
 
-## 技术栈
+**GenBlog智博客**是一个结合了最新的GPT API技术，为用户提供富有创新和互动性的智能博客平台。我们致力于通过AI技术的融合，让博客写作、阅读及互动更加智能化、个性化，从而为用户创造出前所未有的博客体验。
+
+## 技术栈 🛠️
 
 - **前端**: 使用了现代化的JavaScript框架VUE，结合Ant Design组件库，打造出了一个既美观又易用的用户界面。
 
@@ -15,7 +16,7 @@
 
 - **AI功能**: 核心功能由GPT3.5 API提供支持，它为我们的智能模块赋能，使得文章写作和阅读更加智能化。
 
-## 功能特色
+## 功能特色 🔑
 
 - **用户模块**: GenBlog提供了一套完整的用户管理功能，包括用户注册、登录、关注其他用户和编辑个人资料等，让用户能够在一个友好和安全的环境中交流和分享。
 
@@ -44,7 +45,7 @@
 <img src=".assets/summary.png" alt="summary" />
 </p>
 
-## 快速开始
+## 快速开始 🚀
 开始使用GenBlog智博客的旅程非常简单，仅需遵循以下几个步骤：
 
 ### 步骤一：配置后端
@@ -61,7 +62,7 @@
 遵循上述步骤后，你将能够顺利启动GenBlog智博客，开始你的创作和阅读之旅。
 
 
-## 致谢
+## 致谢 🙏
 - [VUE](https://github.com/vuejs/vue) : 前端框架
 - [Ant Design](https://github.com/vueComponent/ant-design-vue) : 前端组件
 - [Django](https://github.com/django/django) : 后端框架
