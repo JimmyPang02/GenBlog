@@ -1,6 +1,6 @@
 <div align="center">
   <img src=".assets/logo.png" alt="GenBlog Logo" width="150"/>
-  <h1 align="center">GenBlog</h1>
+  <h1 align="center">GenBlog🌐</h1>
 </div>
 
 ## Introduction
@@ -8,7 +8,7 @@
 
 **GenBlog** is an innovative and interactive smart blogging platform powered by the latest **GPT API** technology. We are dedicated to integrating AI technology to make blogging, reading, and interaction more intelligent and personalized, thereby creating an unprecedented blogging experience for users.
 
-## Tech Stack
+## Tech Stack 🛠️
 
 - **Frontend**: Utilizes the modern JavaScript framework VUE, combined with the Ant Design component library, to create an interface that is both beautiful and easy to use.
 
@@ -16,7 +16,7 @@
 
 - **AI Features**: The core functionalities are supported by the GPT3.5 API, enhancing the intelligence of our smart modules for writing and reading.
 
-## Key Features
+## Key Features 🔑
 
 - **User Module**: GenBlog offers a comprehensive user management function, including user registration, login, following other users, and editing personal profiles, allowing users to communicate and share in a friendly and secure environment.
 
@@ -44,7 +44,7 @@
 <img src=".assets/summary.png" alt="summary" />
 </p>
 
-## Quick Start
+## Quick Start 🚀
 Starting your journey with GenBlog Smart Blog is incredibly simple, just follow these steps:
 
 ### Step One: Configure the Backend
@@ -60,7 +60,7 @@ Starting your journey with GenBlog Smart Blog is incredibly simple, just follow 
 
 Following these steps will allow you to smoothly start GenBlog Smart Blog and begin your creation and reading journey.
 
-## Acknowledgements
+## Acknowledgements 🙏
 - [VUE](https://github.com/vuejs/vue) : Frontend framework
 - [Ant Design](https://github.com/vueComponent/ant-design-vue) : Frontend components
 - [Django](https://github.com/django/django) : Backend framework
