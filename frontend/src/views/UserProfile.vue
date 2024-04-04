@@ -18,18 +18,10 @@
                                 <TeamOutlined></TeamOutlined>
                                 关注列表
                             </a-menu-item>
-                            <div v-if="is_me">
-                                <a-menu-item key="myposts" @click="selectMenu('myposts')">
-                                    <FormOutlined></FormOutlined>
-                                    我的文章
-                                </a-menu-item>
-                            </div>
-                            <div v-else>
-                                <a-menu-item key="myposts" @click="selectMenu('myposts')">
-                                    <FormOutlined></FormOutlined>
-                                    他的文章
-                                </a-menu-item>
-                            </div>
+                            <a-menu-item key="myposts" @click="selectMenu('myposts')">
+                                <FormOutlined></FormOutlined>
+                                我的文章
+                            </a-menu-item>
                         </a-menu>
                     </div>
                     <div v-if="Current === 'followlist'">
